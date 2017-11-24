@@ -1,0 +1,137 @@
+#include<iostream.h>
+const size=10;
+int stack1[size],stack2[size],stack3[size],stack4[size];
+int top1,top2,top3,top4;
+int item;
+void push(int h,int item)
+{
+if(h ==1)
+{
+if(top1==size-1)
+cout<<"stack is full"<<endl;
+else
+{
+++top1;
+stack1[top1]=item;
+}
+}
+if(h ==2)
+{
+++top2;
+stack2[top2]=item;
+}
+if(h ==3)
+{
+++top3;
+stack3[top3]=item;
+}
+if(h ==4)
+{
+++top4;
+stack4[top4]=item;
+}
+}
+void sep()
+{
+int i;
+for (i=top1;i>=0;--i)
+{
+item=stack1[i];
+push(2,item);
+--top1;
+}
+for(i=top2;i>top2/2;--i)
+{
+item=stack2[i];
+push(3,item);
+}
+
+ for(i=i;i>=0;--i)
+{
+item=stack2[i];
+push(4,item);
+}
+ top2=-1;
+cout<<"Chapter succeeded"<<endl;
+}
+void display()
+{
+int i;
+if(top1==-1)
+cout<<"stack1 is empty"<<endl;
+else
+{
+	cout<<"item in stak1"<<endl;
+ for(i=top1;i>=0;--i)
+ cout<<stack1[i]<<endl;
+}
+if(top3==-1)
+cout<<"stack3 is empty"<<endl;
+else
+{
+	cout<<"item in stak3"<<endl;
+ for(i=top3;i>=0;--i)
+ cout<<stack3[i]<<endl;
+}
+if(top4==-1)
+cout<<"stack4 is empty"<<endl;
+else
+{
+	cout<<"item in stak4"<<endl;
+ for(i=top4;i>=0;--i)
+ cout<<stack4[i]<<endl;
+}
+}
+void clearall()
+{
+top1=-1;
+top2=-1;
+top3=-1;
+top4=-1;
+}
+main()
+{
+clearall();
+int choice,n;
+do
+{
+cout<<endl;
+cout<<"press 1 to add stack1"<<endl;
+cout<<"press 2 to Separation of stack"<<endl; 
+cout<<"press 3 to display all stacks"<<endl;
+cout<<"press 4 to clear all stacks"<<endl;
+cout<<"press 5 to exit "<<endl<<endl;
+cin>>choice;
+switch(choice)
+{
+case 1:
+{
+cout<<"How many items are added in stack1"<<endl;
+	cin>>n;
+	cout<<"enter items  "<<endl;
+	for(int i=1;i<=n;++i)
+	{
+	cin>>item;
+	push(1,item);
+	}
+	break;
+	}
+	case 2:
+	{
+	sep();
+	break;
+	}
+	case 3:
+	{
+	display();
+	break;
+	}
+	case 4:
+	{
+	clearall();
+  cout<<" deleted all stacks"<<endl;
+	break;
+	}
+	}
+	}while(choice !=5);
+	}
