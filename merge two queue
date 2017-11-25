@@ -1,0 +1,165 @@
+#include<iostream.h>
+const size1=10;
+const size2=20;
+int queue1[size1],queue2[size1],queue3[size2];
+int front1,rear1,front2,rear2,front3,rear3;
+int item;
+void addqueue(int h,int item)
+{
+if(h ==1)
+{
+if(rear1==size1-1)
+cout<<"queue1 is full"<<endl;
+else
+{
+  if(rear1==-1)rear1=front1=0;
+  else
+++rear1;
+ queue1[rear1]=item;
+}
+}
+if(h ==2)
+{
+if(rear2==size1-1)
+cout<<"queue2 is full"<<endl;
+else
+{
+  if(rear2==-1)rear2=front2=0;
+  else
+++rear2;
+ queue2[rear2]=item;
+}
+}
+if(h ==3)
+{
+if(rear3==size2-1)
+cout<<"queue2 is full"<<endl;
+else
+{
+  if(rear3==-1)rear3=front3=0;
+  else
+++rear3;
+ queue3[rear3]=item;
+}
+}
+}
+void merge()
+{
+int i;
+if(rear1==-1 || rear2==-1)
+cout<<"can not merge queue is empty"<<endl;
+else
+{
+
+for(i=front1;i<=rear1;++i)
+{
+item=queue1[i];
+addqueue(3,item);
+ ++front1;
+}
+front1=rear1=-1;
+for(i=front2;i<=rear2;++i)
+{
+item=queue2[i];
+ addqueue(3,item);
+ ++front2;
+}
+front2=rear2=-1;
+cout<<"merged two queue in one queue"<<endl;
+}
+}
+void display()
+{
+int i;
+if(rear1==-1)
+ cout<<"queue1 is empty"<<endl;
+ else
+ {
+	cout<<"item in queue1"<<endl;
+  for(i=front1;i<=rear1;++i)
+  cout<<queue1[i]<<endl;
+ }
+ if(rear2==-1)
+ cout<<"queue2 is empty"<<endl;
+ else
+ {
+	cout<<"item in queue2"<<endl;
+  for(i=front2;i<=rear2;++i)
+  cout<<queue2[i]<<endl;
+ }
+ if(rear3==-1)
+ cout<<"queue3 is empty"<<endl;
+ else
+ {
+	cout<<"item in queue3"<<endl;
+  for(i=front3;i<=rear3;++i)
+  cout<<queue3[i]<<endl;
+ }
+ }
+ void clearall()
+ {
+front1=rear1=-1;
+front2=rear2=-1;
+front3=rear3=-1;
+ }
+ main()
+ {
+ int choice,n,i;
+ clearall();
+ do
+ {
+	cout<<endl;
+ cout<<"press 1 to add queue1"<<endl;
+ cout<<"press 2 to add queue2"<<endl;
+ cout<<"press 3 to merge two queue in one queue"<<endl;
+ cout<<"press 4 to display all queue"<<endl;
+ cout<<"press 5 to clear all queue"<<endl;
+ cout<<"press 6 to exit"<<endl<<endl;
+
+  cin>>choice;
+
+	switch(choice)
+	{
+	case 1:
+	{
+	cout<<"How many items are added in queue1"<<endl;
+	cin>>n;
+	cout<<"enter items  "<<endl;
+	for(i=1;i<=n;++i)
+	{
+	cin>>item;
+	addqueue(1,item);
+	}
+	break;
+	}
+	case 2:
+	{
+	cout<<"How many items are added in queue2"<<endl;
+	cin>>n;
+   cout<<"enter items  "<<endl;
+	for(i=1;i<=n;++i)
+	{
+	cin>>item;
+	addqueue(2,item);
+	}
+	break;
+	}
+	case 3:
+	{
+	merge();
+	break;
+	}
+	case 4:
+	{
+	display();
+	break;
+	}
+	case 5:
+	{
+	clearall();
+	 cout<<"deleted all queues"<<endl;
+	break;
+	}
+	}
+	}while(choice !=6);
+	}
