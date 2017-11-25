@@ -1,0 +1,98 @@
+#include<iostream.h>
+const size=10;
+int cq[size];
+int front,rear,item;
+void addcq(int item)
+{
+if(rear==size-1)rear=0;
+else ++rear;
+if(rear==front)
+cout<<"queue is full"<<endl;
+else
+	 cq[rear]=item;
+}
+
+void deletecq()
+{
+if(front==rear)
+{
+ cout<<"cq is empty"<<endl;
+ front=rear=0;
+ }
+ else
+ {
+ if(front==size-1)
+ front=0;
+ else
+  ++front;
+ item=cq[front];
+ cq[front]=0;
+
+ }
+ }
+ void display()
+ {
+ for(int i=0;i<=size-1;++i)
+ cout<<cq[i]<<"   ";
+ cout<<endl<<"fron = "<<front<<endl<<"rear = "<<rear<<endl;
+ }
+ void clear()
+ {
+  front =rear=0;
+  }
+  main()
+  {
+  int choice,n,item,i;
+  clear() ;
+  do
+
+  {
+
+  cout<<endl;
+  cout<<"press 1 to add cq"<<endl;
+  cout<<"press 2 to delete"<<endl;
+  cout<<"press 3 to display"<<endl;
+  cout<<"press 4 to clear "<<endl;
+  cout<<"press 5 to exit"<<endl;
+
+  cin>>choice;
+  switch(choice)
+  {
+  case 1:
+  {
+  	 cout<<"How many items are added"<<endl;
+	 cin>>n;
+	 cout<<"Enter the elements"<<endl;
+	 for(i=1;i<=n;++i)
+	 {
+	 cin>>item;
+	 addcq(item) ;}
+	 break;
+
+  }
+  case 2:
+	{
+	  cout<<"How many items are deleted"<<endl;
+	  cin>>n;
+
+	  for(i=1;i<=n;++i)
+	  deletecq();
+	  break;
+	}
+	case 3:{
+
+	  display() ;
+
+	  break;
+
+
+	}
+	case 4:
+	{
+	clear();
+	}
+	}
+	 }while(choice!=5)  ;
+
+
+}
